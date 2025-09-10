@@ -1,54 +1,30 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\AdminController;
 
-// Rotas Públicas
-Route::get('/', function () {
-    return 'Página inicial';
-})->name('home');
+//Rotas Públicas
+Route::get('/', [HomeController::class, 
+'index'])->name('home');
+Route::get('/sobre', [HomeController::class,
+'sobre'])->name('sobre');
+Route::resource('produtos', ProdutoController::class)
+->only(['index', 'show']);
+Route::get('/cadastro', [HomeController::class,
+'cadastro'])->name('cadastro');
+Route::get('/login', [HomeController::class,
+'login'])->name('login');
 
-Route::get('/produtos', function () {
-    return 'Lista de produtos';
+
+//Rotas Privadas (Área Administrativa)
+Route::prefix('admin')->group(function () {
+    Route::get('/login', [AdminController::class, 'login'])->name('admin.login');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/clientes', [AdminController::class, 'clientesIndex'])->name('admin.clientes');
+    Route::get('/clientes/{id}', [AdminController::class, 'clientesShow'])->name('admin.clienteDetalhe');
+    Route::get('/fornecedores', [AdminController::class, 'fornecedores'])->name('admin.fornecedores');
+    Route::get('/produtos', [AdminController::class, 'produtos'])->name('admin.produtos');
+    Route::get('/produtos/{slug}', [AdminController::class, 'produtosShow'])->name('admin.produtoDetalhe');
 });
-
-Route::get('/produtos/{id}', function (Int $id){
-    echo 'Id do produto: ' . $id;
-})->where('id', '[0-9]+');
-
-Route::get('/cadastro', function () {
-    return 'Página de cadastro de novo cliente';
-});
-
-Route::get('/login', function () {
-    return 'Página de login para clientes';
-});
-
-Route::get('/sobre', function () {
-    return 'Página institucional';
-})->name('sobre');
-
-// Rotas privadas
-Route::prefix('/admin')->group(function(){
-    Route::get('/login', function(){
-        echo 'Tela de login do administrador';
-    });
-    Route::get('/dashboard', function(){
-        echo 'Painel principal';
-    })->name('admin.dashboard');
-    Route::get('/clientes', function(){
-        echo 'Lista de clientes';
-    });
-        Route::get('/clientes/{id?}', function(Int $id){
-        echo 'Visualização de um cliente específico';
-    });
-        Route::get('/fornecedores', function(){
-        echo 'Lista de fornecedores';
-    });
-        Route::get('/produtos', function(){
-        echo 'Lista de produtos cadastrados';
-    });
-        Route::get('/produtos/{slug}', function(){
-        echo 'Visualização de um produto por slug';
-    })->where('{slug}', '[0-9]+')->where('{slug}', '[a-zA-Z0-9-]+');
-});
-
