@@ -40,4 +40,5 @@ class AdminController extends Controller
     {
         return view('pages.admin.produtos.show', ['slug' => $slug]);
     }
+    
 }
