@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (cep.length === 8) {
             toggleAddressFields(true);
             
-            // Faz a requisição ao API do ViaCEP
+            // faz a requisição ao API do ViaCEP
             fetch(`https://viacep.com.br/ws/${cep}/json/`)
                 .then(response => response.json())
                 .then(data => {
