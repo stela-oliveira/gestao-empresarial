@@ -6,16 +6,12 @@ use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\AdminController;
 
 //Rotas Públicas
-Route::get('/', [HomeController::class, 
-'index'])->name('home');
-Route::get('/sobre', [HomeController::class,
-'sobre'])->name('sobre');
-Route::resource('produtos', ProdutoController::class)
-->only(['index', 'show']);
-Route::get('/cadastro', [HomeController::class,
-'cadastro'])->name('cadastro');
-Route::get('/login', [HomeController::class,
-'login'])->name('login');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/sobre', [HomeController::class, 'sobre'])->name('sobre');
+Route::resource('produtos', ProdutoController::class)->only(['index', 'show']);
+Route::get('/cadastro', [HomeController::class, 'cadastro'])->name('cadastro');
+Route::post('/cadastro', [HomeController::class, 'store'])->name('cadastro.store');
+Route::get('/login', [HomeController::class, 'login'])->name('login');
 
 
 //Rotas Privadas (Área Administrativa)
@@ -26,5 +22,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/clientes/{id}', [AdminController::class, 'clientesShow'])->name('admin.clienteDetalhe');
     Route::get('/fornecedores', [AdminController::class, 'fornecedores'])->name('admin.fornecedores');
     Route::get('/produtos', [AdminController::class, 'produtos'])->name('admin.produtos');
-    Route::get('/produtos/{slug}', [AdminController::class, 'produtosShow'])->name('admin.produtoDetalhe');
+    Route::get('/produtos/create', [AdminController::class, 'produtoCreate'])->name('admin.produtos.create'); 
+    Route::post('/produtos/store', [AdminController::class, 'produtoStore'])->name('admin.produtos.store');
+    Route::get('/produtos/{id}', [AdminController::class, 'produtosShow'])->name('admin.produtoDetalhe');
 });

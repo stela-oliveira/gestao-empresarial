@@ -7,13 +7,13 @@
     @vite('resources/css/app.css')
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #f4e2a6ff;
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f8da76ff;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffffff;">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ route('admin.dashboard') }}">Painel Admin</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@
                 </ul>
             </div>
             <div class="d-flex">
-                <a href="{{ route('home') }}" class="btn btn-outline-light">Voltar para o Site</a>
+                <a href="{{ route('home') }}" class="btn btn-outline-warning">Voltar para o Site</a>
             </div>
         </div>
     </nav>

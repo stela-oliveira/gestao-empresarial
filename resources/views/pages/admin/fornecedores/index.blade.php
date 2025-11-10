@@ -21,8 +21,8 @@
             </tr>
             <tr>
                 <th scope="row">2</th>
-                <td>João pedro</td>
-                <td>joao@fornecedor.com</td>
+                <td>Lais Siqueira</td>
+                <td>lais@fornecedor.com</td>
             </tr>
         </tbody>
     </table>
