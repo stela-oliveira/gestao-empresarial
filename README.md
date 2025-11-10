@@ -4,7 +4,7 @@ Este projeto é uma aplicação web desenvolvida em Laravel para gerenciar produ
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 O projeto foi construído utilizando o seguinte stack de tecnologias:
 
@@ -16,7 +16,7 @@ O projeto foi construído utilizando o seguinte stack de tecnologias:
 
 ---
 
-## 🖼️ Telas Principais
+## Telas Principais
 
 O projeto possui duas áreas principais: a área Pública (E-commerce) e a área Privada (Painel Admin).
 
@@ -27,6 +27,7 @@ O projeto possui duas áreas principais: a área Pública (E-commerce) e a área
 | **Listagem de Produtos** | `/produtos` | Lista todos os produtos disponíveis no banco de dados, em formato de cards. |
 | **Detalhe do Produto** | `/produtos/{id}` | Exibe informações detalhadas, descrição e preço de um produto específico. |
 | **Login** | `/login` | Formulário de acesso ao Painel Admin. |
+| **Sobre** | `/sobre` | Detalhes sobre a empresa. |
 
 ### 2. Área Administrativa (Painel Admin)
 | Tela | Rota Nomeada | URL | Funcionalidade Principal |
@@ -40,7 +41,7 @@ O projeto possui duas áreas principais: a área Pública (E-commerce) e a área
 
 ---
 
-## 🚀 Como Rodar o Projeto
+## Como Rodar o Projeto
 
 Siga os passos abaixo para configurar e rodar o projeto em seu ambiente local.
 
@@ -51,56 +52,46 @@ Certifique-se de ter o **PHP**, **Composer** e **MySQL** instalados em sua máqu
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [LINK DO SEU REPOSITÓRIO]
-    cd nome-do-projeto
+    git clone https://github.com/stela-oliveira/gestao-empresarial
     ```
 
-2.  **Instale as dependências do Composer:**
+2.  **Instale as dependências do Composer e NPM:**
     ```bash
     composer install
+    npm install
     ```
 
 3.  **Crie e configure o arquivo `.env`:**
     ```bash
     cp .env.example .env
     ```
-    Edite o arquivo `.env` com suas credenciais de banco de dados (confira as configurações abaixo da seção).
+    Edite o arquivo `.env` com suas credenciais de banco de dados.
 
 4.  **Gere a chave da aplicação:**
     ```bash
     php artisan key:generate
     ```
 
-### 2. Configuração do Banco de Dados
-
-Baseado em suas credenciais:
-
-| Variável | Valor |
-| :--- | :--- |
-| `DB_DATABASE` | `gestao_empresarial` |
-| `DB_USERNAME` | `root` |
-| `DB_PASSWORD` | `root` |
-
-1.  **Crie o banco de dados `gestao_empresarial`** no seu ambiente MySQL.
-2.  **Rode as migrações** para criar as tabelas (incluindo `clientes` e `produtos`):
+5.  **Rode as migrações** para criar as tabelas (incluindo `clientes` e `produtos`):
     ```bash
     php artisan migrate
     ```
 
-### 3. Configuração de Upload de Imagens
+### 2. Configuração de Upload de Imagens
 
 O projeto utiliza o sistema de arquivos do Laravel para armazenar imagens de produtos (no disco `public`).
 
-1.  **Crie o link simbólico** para que as imagens sejam acessíveis publicamente:
+**Crie o link simbólico** para que as imagens sejam acessíveis publicamente:
     ```bash
     php artisan storage:link
     ```
 
-### 4. Iniciando o Servidor
+### 3. Iniciando o Servidor
 
-1.  **Inicie o servidor de desenvolvimento do Laravel:**
+1.  **Inicie o servidor de desenvolvimento:**
     ```bash
     php artisan serve
+    npm run dev
     ```
 
 O projeto estará acessível em `http://127.0.0.1:8000`.
@@ -109,21 +100,18 @@ O projeto estará acessível em `http://127.0.0.1:8000`.
 
 ## 📚 Fontes de Pesquisa/Documentação
 
-Esta seção deve ser **PREENCHIDA POR VOCÊ** com os links e títulos de todas as fontes de pesquisa utilizadas durante o desenvolvimento.
-
 ### Documentação e Artigos de Blog
 
 | Tipo | Título do Artigo / Documentação Oficial | Link |
 | :--- | :--- | :--- |
-| Documentação | Laravel - File Storage (Upload de Arquivos) | [COLE SEU LINK AQUI] |
-| Artigo/Blog | Como usar o findOrFail no Laravel | [COLE SEU LINK AQUI] |
-| Artigo/Blog | Formatando valores monetários no PHP/Blade | [COLE SEU LINK AQUI] |
-| **[ADICIONE MAIS]** | **[ADICIONE MAIS TÍTULOS AQUI]** | **[ADICIONE MAIS LINKS AQUI]** |
+| Documentação | Laravel - File Storage (Upload de Arquivos) | https://laravel.com/docs/12.x/filesystem |
+| Documentação | Laravel - Database: Migrations | https://laravel.com/docs/12.x/migrations |
+| Video YT | LARAVEL #083 UPLOAD DE FICHEIRO PARA O STORAGE | https://youtu.be/Vlfct9p9sv0?si=GfJIt4ZJrA9uHhV1 (1:50) |
+| Artigo/Blog | Como formatar valor monetários no Laravel | https://pt.stackoverflow.com/questions/147430/como-formatar-valor-monet%C3%A1rios-no-laravel |
+| Documentação | Eloquent: Factories para os models | https://laravel.com/docs/12.x/eloquent-factories |
+| Documentação | Exemplos para estilização para as tabelas | https://getbootstrap.com/docs/5.3/content/tables/ |
+| Documentação | Cores para o layout | https://getbootstrap.com/docs/5.3/customize/color/ |
+| Documentação | Implementar o ViaCep | https://viacep.com.br/ |
+| Artigo/Blog | Limpar campo para implemar o viacep | https://pt.stackoverflow.com/questions/16860/limpar-cep-com-javascript |
+| Artigo/Blog | Como verificar se tem algum erro no blade do laravel com a tag @error laravel 5.8.13? | https://pt.stackoverflow.com/questions/387849/como-verificar-se-tem-algum-erro-no-blade-do-laravel-com-a-tag-error-laravel-5 |
 
-### Tutoriais e Vídeos do YouTube
-
-| Título do Vídeo | Link | Minuto/Segundo da Informação |
-| :--- | :--- | :--- |
-| CRUD de Produtos com Upload de Imagem no Laravel | [COLE SEU LINK AQUI] | 08:32 (Exemplo) |
-| Entendendo as Rotas Resource no Laravel | [COLE SEU LINK AQUI] | 03:00 (Exemplo) |
-| **[ADICIONE MAIS]** | **[ADICIONE MAIS LINKS AQUI]** | **[ADICIONE MAIS MIN/SEG AQUI]** |
